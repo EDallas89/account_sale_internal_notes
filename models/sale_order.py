@@ -1,6 +1,5 @@
 from odoo import api, fields, models, _
 
-
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
@@ -9,37 +8,14 @@ class SaleOrder(models.Model):
     @api.multi
     def _prepare_invoice(self):
         invoice_vals = super(SaleOrder, self)._prepare_invoice()
-        invoice_vals['internal_note'] = self.internal_note
+        invoice_vals["internal_note"] = self.internal_note
         return invoice_vals
 
-#    @api.multi
-#    def _prepare_invoice(self):
-#        invoice_vals = super(SaleOrder, self)._prepare_invoice()
-#        invoice_vals["internal_note"] = self.internal_note or False
-#    return internal_note
-#    #        res = super().prepare_invoice
-#    #        res["internal_note"] = self.internal_note
-#    return res
+class SaleAdvancePaymentInv(models.TransientModel):
+    _inherit = "sale.advance.payment.inv"
 
-
-#    @api.multi
-#    def _prepare_invoice(self):
-#        invoice_vals = super(<your_class_name>, self)._prepare_invoice()
-#        invoice_vals['condition'] = self.condition  or False
-#        return invoice_vals
-
-# i got this function
-#   @api.multi
-#   def _prepare_invoice(self):
-#        invoice_vals = super(SaleOrder, self)._prepare_invoice()
-#        invoice_vals['incoterms_id'] = self.incoterm.id or False
-#        return invoice_vals
-#
-# do i change it as
-#
-#   @api.multi
-#    def _prepare_invoice(self):
-#        invoice_vals = super(SaleOrder, self)._prepare_invoice()
-#        invoice_vals['incoterms_id'] = self.incoterm.id or False
-#        invoice_vals['x_conditions'] = self.x_conditions or False
-#        return invoice_vals
+    @api.multi
+    def _create_invoice(self, order, so_line, amount):
+        res = super()._create_invoice(order, so_line, amount)
+        res.update({'internal_note':order.internal_note})
+        return res
