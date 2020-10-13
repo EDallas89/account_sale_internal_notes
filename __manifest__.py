@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "account_sale_internal_notes",
+    'name': "Internal Notes for Account and Sale",
 
     'summary': """
         Add internal notes fields to tree and form views for 
         quotations, sales and purchases.
     """,
     'author': "Inma Sánchez",
-    'website': "http://www.yourcompany.com",
+    'website': "https://github.com/EDallas89",
     'category': 'Notes',
     'version': '11.0',
     'depends': ['account', 'sale_management'],
