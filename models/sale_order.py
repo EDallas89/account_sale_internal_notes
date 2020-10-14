@@ -3,10 +3,12 @@ from odoo import api, fields, models, _
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    internal_note = fields.Text(string="Internal Note")
+    internal_note = fields.Text(
+        string="Internal Note",
+        readonly=False
+    )
 
-    @api.multi
-    def _prepare_invoice(self):
-        invoice_vals = super(SaleOrder, self)._prepare_invoice()
-        invoice_vals["internal_note"] = self.internal_note
-        return invoice_vals
+    origin_o2m = fields.One2many(
+        comodel_name='account.invoice', 
+        inverse_name='origin_m2o',
+        string="Facturas")
