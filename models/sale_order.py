@@ -13,5 +13,5 @@ class SaleOrder(models.Model):
     
     @api.onchange('internal_note')
     def _onchange_internal_note(self):
-        so = self.env['account.invoice'].search([('origin', '=', self.name)], limit=1)
+        so = self.env['account.invoice'].search([('origin', '=', self.name)])
         so.write({'internal_note' : self.internal_note})

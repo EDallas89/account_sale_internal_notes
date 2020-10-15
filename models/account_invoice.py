@@ -10,3 +10,6 @@ class AccountInvoice(models.Model):
     def _onchange_internal_note(self):
         so = self.env['sale.order'].search([('name', '=', self.origin)], limit=1)
         so.write({'internal_note' : self.internal_note})
+
+        inv = self.env['account.invoice'].search([('origin', '=', self.origin)])
+        inv.write({'internal_note' : self.internal_note})
