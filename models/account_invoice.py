@@ -11,7 +11,6 @@ class AccountInvoice(models.Model):
 
     origin_m2o = fields.Many2one(
         comodel_name='sale.order',
-        string="Source Document",
         compute='_compute_origin',
     )
 
