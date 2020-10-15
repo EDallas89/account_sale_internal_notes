@@ -1,6 +1,4 @@
-# account_sale_internal_notes
- Add internal notes fields to tree and form views for quotations, sales and purchases.
+# Internal Notes for Account and Sale
 
-This module have two branchs functionally different:
-  - master: inherid odoo methods for write internal_notes fields. 
-  - related_fields: used related option on internal_notes fields (by o2m - m2o)
+This module add internal_note field on quotations and invoice.
+Also this fields update each other if their origin field is equal.
