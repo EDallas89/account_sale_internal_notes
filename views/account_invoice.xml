@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
   <data>
-    <!-- Account Invoice -->
+    <!-- Account Invoice (Customer Invoices) -->
     <record id="account_internal_notes_invoice_form" model="ir.ui.view">
       <field name="name">account.internal.notes.invoice.form.view</field>
       <field name="model">account.invoice</field>
@@ -26,14 +26,14 @@
       </field>
     </record>
 
-    <!-- Account Supplier -->
+    <!-- Account Supplier (Vendor Bills) -->
     <record id="account_internal_notes_supplier_form" model="ir.ui.view">
       <field name="name">account.internal.notes.supplier.form.view</field>
       <field name="model">account.invoice</field>
       <field name="inherit_id" ref="account.invoice_supplier_form" />
       <field name="priority" eval="20" />
       <field name="arch" type="xml">
-        <xpath expr="//field[@name='reference']" position="after">
+        <xpath expr="//field[@name='purchase_id']" position="after">
           <field name="internal_note" />
         </xpath>
       </field>

@@ -3,3 +3,4 @@
 from . import account_invoice
 from . import sale_order
 from . import sale_advance_payment_inv
+from . import purchase_order

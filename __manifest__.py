@@ -10,9 +10,10 @@
     'website': "https://github.com/EDallas89",
     'category': 'Notes',
     'version': '11.0',
-    'depends': ['account', 'sale_management'],
+    'depends': ['account', 'sale_management', 'purchase'],
     'data': [
         'views/account_invoice.xml',
         'views/sale_order.xml',
+        'views/purchase_order.xml'
     ]
 }
