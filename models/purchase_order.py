@@ -7,9 +7,6 @@ class PurchaseOrder(models.Model):
 
     @api.onchange('internal_note')
     def _onchange_internal_note(self):
-#        po = self.env['account.invoice'].search([('origin', '=', self.name)])
-#        po.write({'internal_note' : self.internal_note})
-
     # Change internal_note field on all its invoices
         invoices = self.env['account.invoice'].search([('origin', 'like', self.name)])
         for inv in invoices:
