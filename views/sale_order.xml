@@ -13,6 +13,18 @@
       </field>
     </record>
 
+    <record id="account_internal_notes_sale_order_tree" model="ir.ui.view">
+      <field name="name">account.internal.notes.sale.order.tree.view</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_tree" />
+      <field name="priority" eval="20" />
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='partner_id']" position="before">
+          <field name="internal_note" />
+        </xpath>
+      </field>
+    </record>
+
     <record id="account_internal_notes_sale_tree" model="ir.ui.view">
       <field name="name">account.internal.notes.sale.tree.view</field>
       <field name="model">sale.order</field>
